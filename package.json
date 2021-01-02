@@ -92,7 +92,13 @@
     ]
   },
   "devDependencies": {
-    "rc-field-form": "^1.17.3"
+    "flux-standard-action": "^2.1.1",
+    "is-promise": "^4.0.0",
+    "rc-field-form": "^1.17.3",
+    "redux": "^4.0.5",
+    "redux-logger": "^3.0.6",
+    "redux-promise": "^0.6.0",
+    "redux-thunk": "^2.3.0"
   },
   "jest": {
     "roots": [
