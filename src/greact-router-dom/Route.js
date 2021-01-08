@@ -1,11 +1,13 @@
 import React, { useContext } from 'react'
 import RouterContext from './RouterContext'
+import matchPath from './matchPath'
 
 function Route(props) {
-    let context = useContext(RouterContext)
+    let {location} = useContext(RouterContext)
+    let match = matchPath(location.location.pathname, props)
     return (
         <div>
-            {window.location.pathname === props.path ? React.createElement(props.component) : null}
+            {match ? React.createElement(props.component) : null}
         </div>
     )
 }
