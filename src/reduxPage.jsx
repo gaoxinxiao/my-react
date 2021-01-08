@@ -1,7 +1,7 @@
 import React from 'react'
 import Store from './store'
+import { bindActionCreators, connect } from './greactRedux'
 
-console.log(Store, 'Store')
 
 // const Page = () => {
 
@@ -13,16 +13,32 @@ console.log(Store, 'Store')
 // }
 
 
+//hoc
+@connect(
+    //mapStateToProps
+    ({ count }) => ({ count }),
+    //mapDispatchToProps
+    {
+        add: () => ({ type: "ADD" }),
+        minus: () => ({ type: "MINUS" })
+    }
+    // (dispatch) => {
+    //     let creators = {
+    //         add: () => ({ type: "ADD" }),
+    //         minus: () => ({ type: "MINUS" })
+    //     }
 
+    //     creators = bindActionCreators(creators,dispatch)
 
-
-
-
-
+    //     return {
+    //         dispatch,
+    //         ...creators
+    //     }
+    // }
+)
 class Page extends React.Component {
     componentDidMount() {
         this.unsubscribe = Store.subscribe(() => {
-            console.log('值改变')
             this.forceUpdate()
         })
     }
@@ -30,17 +46,21 @@ class Page extends React.Component {
         this.unsubscribe()
     }
     add = () => {
-        Store.dispatch({ type: 'ADD' })
+        const { dispatch } = this.props
+        dispatch({ type: 'ADD' })
     }
     minus = () => {
-        Store.dispatch({ type: 'MINUS' })
+        const { dispatch } = this.props
+        dispatch({ type: 'MINUS' })
     }
     asyncAdd = () => {
         // setTimeout(() => {
         //     Store.dispatch({ type: 'ADD' })
         // }, 1000)
 
-        Store.dispatch((dispatch, getState) => {
+        const { dispatch } = this.props
+
+        dispatch((dispatch, getState) => {
             setTimeout(() => {
                 dispatch({ type: 'ADD' })
             }, 1000)
@@ -48,31 +68,34 @@ class Page extends React.Component {
     }
 
     promiseAdd = () => {
-        Store.dispatch(Promise.resolve({
+        const { dispatch } = this.props
+
+        dispatch(Promise.resolve({
             type: 'MINUS',
             payload: 100
         }))
     }
     addNum = () => {
-        Store.dispatch({
+        const { dispatch } = this.props
+        dispatch({
             type: 'ADDNUM'
         })
     }
     render() {
+        console.log(this.props)
+        const { count, add, minus } = this.props
         return <div>
-            <p>count:{Store.getState().count}</p>
-            <p>num:{Store.getState().num}</p>
-            <p onClick={this.addNum}>ADDADDNUM</p>
+            <p>count:{count}</p>
+            {/* <p>num:{Store.getState().num}</p> */}
+            {/* <p onClick={this.addNum}>ADDADDNUM</p> */}
 
-            <p onClick={this.add}>ADD</p>
+            <p onClick={add}>ADD</p>
+            <p onClick={minus}>MINUS</p>
             <p onClick={this.asyncAdd}>asyncAdd</p>
             <p onClick={this.promiseAdd}>promiseMinus</p>
-            <p onClick={this.minus}>MINUS</p>
         </div>
     }
 }
-
-
 
 
 
