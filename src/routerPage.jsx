@@ -12,8 +12,14 @@ import React, { Component } from 'react'
 //     Redirect,
 //     useRouteMatch
 // } from 'react-router-dom'
-import { BrowserRouter as Router, Route, Link, Switch } from './greact-router-dom'
-import RouterContext from './greact-router-dom/RouterContext'
+import {
+    BrowserRouter as Router,
+    Route,
+    Link,
+    Switch,
+    withRouter,
+    Prompt
+} from './greact-router-dom'
 
 /**
  * react-router三种渲染方式
@@ -23,63 +29,18 @@ import RouterContext from './greact-router-dom/RouterContext'
 */
 
 function Detail(params) {
-    // const match = useRouteMatch()
-    // console.log(match, 'match')
     return <div>详情</div>
 }
 
 class Home extends React.Component {
     componentDidMount() {
-        console.log('componentDidMount')
+        // console.log('componentDidMount')
     }
     componentWillUnmount() {
-        console.log('componentWillUnmount')
+        // console.log('componentWillUnmount')
     }
     render() {
         return <div>首页</div>
-    }
-}
-class Prompt extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            when: props.when || true,
-            message: props.message
-        }
-    }
-    render() {
-        return <RouterContext.Consumer>
-            {(context) => {
-                if (!this.state.when) {
-                    return null
-                }
-                // let method = context.history.block
-                return <LifeCycle
-                    onMount={self => {
-
-                    }}
-                    onUnMount={self => {
-
-                    }}
-                />
-            }}
-        </RouterContext.Consumer>
-    }
-}
-
-class LifeCycle extends React.Component {
-    componentDidMount() {
-        if (this.props.onMount) {
-            this.props.onMount.call(this, this)
-        }
-    }
-    componentWillUnmount() {
-        if (this.props.onUnMount) {
-            this.props.onUnMount.call(this, this)
-        }
-    }
-    render() {
-        return null
     }
 }
 
@@ -104,7 +65,6 @@ class Product extends Component {
         );
     }
 }
-
 export default class routerPage extends Component {
     state = {
         count: 0
@@ -121,11 +81,7 @@ export default class routerPage extends Component {
                     <Link to='/shop'>商品</Link>
 
                     <Switch>
-                        <Route exact path='/'
-                            // render={() => <Home />}
-                            component={Home}
-                        //  children={() => <div>children</div>}
-                        />
+                        <Route exact path='/' component={Home} />
                         <Route path='/detail' render={() => <Detail />} />
                         <Route path='/login' component={() => <div>登陆</div>} />
                         <Route path='/shop' component={Product} />
