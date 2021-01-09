@@ -1,7 +1,6 @@
 
 function combineReducers(redures) {
     return function (state = {}, action) {
-        console.log(state,'state')
         let nextState = {}
         let hashChanged = 0
         for (let key in redures) {
