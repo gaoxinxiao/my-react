@@ -97,6 +97,7 @@
     "@babel/plugin-proposal-decorators": "^7.12.12",
     "flux-standard-action": "^2.1.1",
     "is-promise": "^4.0.0",
+    "jquery": "^3.5.1",
     "rc-field-form": "^1.17.3",
     "react-redux": "^7.2.2",
     "redux": "^4.0.5",

@@ -11,3 +11,24 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.red{
+  color:red;
+}
+.item{
+  cursor: pointer;
+}
+
+.input{
+  width:200px;
+  height:200px;
+  line-height:24px;
+  font-size:14px;
+  padding:5px 8px;
+  border:1px solid #ddd;
+  margin: 50px;
+  color: #000;
+}
+.input:empty::before {
+  content: attr(placeholder);
+}
