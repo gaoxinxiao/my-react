@@ -12,11 +12,12 @@ class Prompt extends React.Component {
     render() {
         const { message, when } = this.state
         return <RouterContext.Consumer>
-            {({ context }) => {
+            {context => {
                 if (!when) {
                     return null
                 }
-                let method = context.histrory.block
+                let method = context.history.block
+
                 return <LifeCycle
                     onMount={self => {
                         self.replace = method(message)

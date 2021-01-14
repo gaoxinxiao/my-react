@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import Kkbapp from './kkbapp'
 import reportWebVitals from './reportWebVitals';
 // import { Provider } from 'react-redux'
 import Store from './store'
@@ -10,7 +11,7 @@ import { Provider } from './greactRedux'
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={Store}>
-      <App />
+      <Kkbapp />
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
