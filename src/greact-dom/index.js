@@ -3,7 +3,6 @@
 function render(vnode, container) {
     //vnode -> node
     let node = createNode(vnode)
-
     container.appendChild(node)
 }
 
@@ -17,6 +16,7 @@ function updateAttrs(props, node) {
 
 function updateHostComponent(vnode) {
     const { type, props } = vnode
+    if (typeof type === 'symbol') return
     let node = document.createElement(type)
 
     if (typeof props.children === 'string') {
@@ -54,15 +54,29 @@ function updateClaComp(vnode) {
     return createNode(ele)
 }
 
+function updateFragmentComponent(vnode) {
+    let children = vnode.props.children
+    if (Array.isArray(children)) {
+        for (let i = 0; i < children.length; i++) {
+            return createNode(children[i])
+        }
+    }
+    // return createNode(vnode)
+}
+
 function createNode(vnode) {
     const { type } = vnode
     // let child = Array.isArray(props.children) ? props.children : [props.children]
     let node = null
+
     if (typeof type === 'string') {
         //创建标签
         node = updateHostComponent(vnode)
     } else if (typeof type === 'function') {
         node = type.prototype.isReactComponent ? updateClaComp(vnode) : updateFunComp(vnode)
+    } else {
+        node = updateFragmentComponent(vnode);
+        console.log(node, 'node123')
     }
 
     return node
