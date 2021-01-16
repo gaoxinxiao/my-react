@@ -19,11 +19,27 @@ import $ from 'jquery'
 
 // import ReactDOM from "./greact-dom"
 
+
+// function FunComp(params) {
+//   return <div>我是FunComp</div>
+// }
+
+
+// class ClComp extends React.Component {
+//   render() {
+//     return <div>我是类组件ClComp</div>
+//   }
+// }
+
+// ClComp.prototype.isReactComponent = {}
+
 // const jsx = (
 //   <div className='wrap'>
 //     <h1 className='red'>登高</h1>
 //     <p>风急天高猿啸哀</p>
 //     <p>渚清沙白鸟飞回</p>
+//     <FunComp />
+//     <ClComp />
 //   </div>
 // )
 
