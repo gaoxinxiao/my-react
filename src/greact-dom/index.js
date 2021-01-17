@@ -56,12 +56,9 @@ function updateClaComp(vnode) {
 
 function updateFragmentComponent(vnode) {
     let children = vnode.props.children
-    if (Array.isArray(children)) {
-        for (let i = 0; i < children.length; i++) {
-            return createNode(children[i])
-        }
-    }
-    // return createNode(vnode)
+    let Fragment = document.createDocumentFragment()
+    reconcileChildren(children, Fragment)
+    return Fragment
 }
 
 function createNode(vnode) {
@@ -76,7 +73,6 @@ function createNode(vnode) {
         node = type.prototype.isReactComponent ? updateClaComp(vnode) : updateFunComp(vnode)
     } else {
         node = updateFragmentComponent(vnode);
-        console.log(node, 'node123')
     }
 
     return node
