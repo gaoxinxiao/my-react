@@ -41,8 +41,8 @@ const jsx = (
     <h1 className='red'>登高</h1>
     <p>风急天高猿啸哀</p>
     <p>渚清沙白鸟飞回</p>
-    <FunComp />
-    {/* <ClComp /> */}
+    {/* <FunComp /> */}
+    <ClComp />
   </div>
 )
 
