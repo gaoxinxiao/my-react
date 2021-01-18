@@ -50,11 +50,8 @@ import $ from 'jquery'
 // ReactDOM.render(jsx, document.getElementById('root'))
 
 
-
 function TextArea() {
 
-  const [valueNode, setValueNode] = useState('')
-  const [valueNodeList, setValueNodeList] = useState([])
   const [valueNodeObj, setValueNodeObj] = useState({})
   const [isShow, setIsShow] = useState(false)
 
@@ -95,7 +92,8 @@ function TextArea() {
             let text = Input.textContent.slice(0, Input.textContent.length - 1)
             Object.keys(valueNodeObj).forEach(key => {
               if (text.indexOf(key) !== -1) {
-                text = text.replace(key, valueNodeObj[key])
+                var reg = new RegExp(`\\${key}`, 'gim');
+                text = text.replace(reg, valueNodeObj[key])
               }
             })
 
@@ -103,9 +101,8 @@ function TextArea() {
 
             $("#Input").html(text + str);
 
-
-            valueNodeObj['@' + res.name] = `<span contenteditable=false style='color:red'>@${res.name}</span>`
-
+            if (!valueNodeObj['@' + res.name]) valueNodeObj['@' + res.name] = `<span contenteditable=false style='color:red'>@${res.name}</span>`
+            
             setIsShow(false)
           }}>{res.name}</p>
       })
