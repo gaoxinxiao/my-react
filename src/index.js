@@ -1,5 +1,5 @@
 import React from 'react';
-// import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom';
 // import $ from 'jquery'
 // import App from './App';
 // import Kkbapp from './kkbapp'
@@ -16,43 +16,43 @@ import React from 'react';
 //   document.getElementById('root')
 // );
 
-import ReactDOM,{useState} from "./greact-dom"
-import './index.css';
+// import ReactDOM,{useState} from "./greact-dom"
+// import './index.css';
 
 
-function FunComp() {
+// function FunComp() {
 
-  //输出数组是因为不想让变量固定
-  const [count,setCount] = useState(0)
+//   //输出数组是因为不想让变量固定
+//   const [count,setCount] = useState(0)
 
-  return <>
-    <button onClick={()=> setCount(count+1)}>{count+''}</button>
-    <p>我是FunComp1</p>
-    <p>我是FunComp2</p>
-  </>
-}
-
-
-class ClComp extends React.Component {
-  render() {
-    return <div>我是类组件ClComp</div>
-  }
-}
-
-ClComp.prototype.isReactComponent = {}
-
-const jsx = (
-  <div className='wrap'>
-    <h1 className='red'>登高</h1>
-    <p>风急天高猿啸哀</p>
-    <p>渚清沙白鸟飞回</p>
-    <FunComp />
-    <ClComp />
-  </div>
-)
+//   return <>
+//     <button onClick={()=> setCount(count+1)}>{count+''}</button>
+//     <p>我是FunComp1</p>
+//     <p>我是FunComp2</p>
+//   </>
+// }
 
 
-ReactDOM.render(jsx, document.getElementById('root'))
+// class ClComp extends React.Component {
+//   render() {
+//     return <div>我是类组件ClComp</div>
+//   }
+// }
+
+// ClComp.prototype.isReactComponent = {}
+
+// const jsx = (
+//   <div className='wrap'>
+//     <h1 className='red'>登高</h1>
+//     <p>风急天高猿啸哀</p>
+//     <p>渚清沙白鸟飞回</p>
+//     <FunComp />
+//     <ClComp />
+//   </div>
+// )
+
+
+// ReactDOM.render(jsx, document.getElementById('root'))
 
 
 // function TextArea() {
@@ -107,7 +107,7 @@ ReactDOM.render(jsx, document.getElementById('root'))
 //             $("#Input").html(text + str);
 
 //             if (!valueNodeObj['@' + res.name]) valueNodeObj['@' + res.name] = `<span contenteditable=false style='color:red'>@${res.name}</span>`
-            
+
 //             setIsShow(false)
 //           }}>{res.name}</p>
 //       })
@@ -119,3 +119,9 @@ ReactDOM.render(jsx, document.getElementById('root'))
 //   <TextArea />,
 //   document.getElementById('root')
 // );
+
+
+
+import UseCallbackPage from './useCallback'
+
+ReactDOM.render(<UseCallbackPage />, document.getElementById('root'))
